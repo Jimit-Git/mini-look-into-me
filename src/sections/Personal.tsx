@@ -22,6 +22,10 @@ interface PersonalData {
   photos: Photo[];
 }
 
+function resolveAssetPath(src: string): string {
+  return `${import.meta.env.BASE_URL}${src.replace(/^\//, '')}`;
+}
+
 export function Personal() {
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
   const { data, content } = parseMarkdown<PersonalData>(personalRaw);
@@ -42,7 +46,7 @@ export function Personal() {
           >
             <div className={styles.imageFrame}>
               <img
-                src={photo.src}
+                src={resolveAssetPath(photo.src)}
                 alt={photo.alt}
                 className={styles.photo}
                 loading="lazy"
@@ -75,7 +79,7 @@ export function Personal() {
                 ✕
               </button>
               <img
-                src={selectedPhoto.src}
+                src={resolveAssetPath(selectedPhoto.src)}
                 alt={selectedPhoto.alt}
                 className={styles.lightboxImage}
               />
