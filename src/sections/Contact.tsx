@@ -126,7 +126,7 @@ export function Contact() {
 
         <div className={styles.resumeActions}>
           <a
-            href="/resume"
+            href={`${import.meta.env.BASE_URL}?view=resume`}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.resumeBtn}

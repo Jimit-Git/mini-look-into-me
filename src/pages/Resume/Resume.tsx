@@ -111,7 +111,11 @@ export function Resume() {
     <div className={styles.container}>
       {/* Floating Download Bar (Fixed top-middle, hidden on print) */}
       <header className={styles.floatingNav}>
-        <a href="/" className={styles.backBtn} title="Back to portfolio">
+        <a
+          href={import.meta.env.BASE_URL}
+          className={styles.backBtn}
+          title="Back to portfolio"
+        >
           <RiArrowLeftLine className={styles.btnIcon} />
           <span>portfolio</span>
         </a>
