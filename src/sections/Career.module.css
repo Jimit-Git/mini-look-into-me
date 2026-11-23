@@ -1,0 +1,262 @@
+.career {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  margin: auto 0;
+}
+
+.heading {
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.75rem;
+  margin-top: 0.25rem;
+}
+
+/* Vertical Spine Line running through the node dots */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 4px;
+  width: 2px;
+  background-color: var(--timeline-line);
+  border-radius: 2px;
+}
+
+.entry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-bottom: 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.entry:last-child {
+  padding-bottom: 0;
+}
+
+.entry:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Node Dot on the timeline */
+.nodeDot {
+  position: absolute;
+  top: 4px;
+  left: -1.75rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--bg-primary);
+  border: 2px solid var(--accent);
+  z-index: 1;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.entry:hover .nodeDot {
+  transform: scale(1.25);
+}
+
+/* Glowing dot for current role */
+.nodeDotCurrent {
+  background-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.nodeDotActive {
+  background-color: var(--accent-muted);
+  border-color: var(--accent);
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+
+.headerRow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.period {
+  font-size: clamp(0.7rem, 1vw, 0.75rem);
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+.currentBadge {
+  font-size: 0.65rem;
+  color: var(--accent);
+  background-color: var(--accent-muted);
+  padding: 0.1rem 0.45rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+.currentPulse {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.4);
+  }
+}
+
+.location {
+  font-size: clamp(0.68rem, 0.9vw, 0.72rem);
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.expandTrigger {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+}
+
+.expandIcon {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+}
+
+.entry:hover .expandIcon {
+  color: var(--accent);
+}
+
+.expandIconRotated {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.1rem;
+}
+
+.roleOrgRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.role {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+.entry:hover .role {
+  color: var(--accent);
+}
+
+.org {
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.expandedContent {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-top: 0.25rem;
+}
+
+.description {
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+.tag {
+  font-size: clamp(0.65rem, 0.85vw, 0.72rem);
+  color: var(--text-secondary);
+  background-color: color-mix(in srgb, var(--text-primary) 3%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text-primary) 8%, transparent);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.entry:hover .tag {
+  border-color: var(--accent-muted);
+  color: var(--text-primary);
+}
+
+/* Education Section */
+.educationSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.85rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed color-mix(in srgb, var(--text-primary) 12%, transparent);
+}
+
+.subHeadingRow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.subHeadingPrefix {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.subHeading {
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  text-transform: lowercase;
+  margin: 0;
+}

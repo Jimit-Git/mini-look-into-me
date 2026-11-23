@@ -1,0 +1,15 @@
+.contentBox {
+  width: 100%;
+  max-width: 720px;
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1rem, 2.5vw, 2.5rem);
+  scrollbar-width: none;
+  box-sizing: border-box;
+}
+
+.contentBox::-webkit-scrollbar {
+  display: none;
+}

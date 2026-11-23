@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="jb-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1A1A" />
+      <stop offset="100%" stop-color="#0F0F11" />
+    </linearGradient>
+    <linearGradient id="amber-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded squircle background -->
+  <rect width="64" height="64" rx="14" fill="url(#jb-bg)" />
+  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" fill="none" stroke="url(#amber-accent)" stroke-width="2" stroke-opacity="0.85" />
+
+  <!-- Monogram text -->
+  <text
+    x="31"
+    y="43"
+    text-anchor="middle"
+    font-family="'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+    font-size="28"
+    font-weight="800"
+    letter-spacing="-1.5px"
+  >
+    <tspan fill="#F5F2EB">J</tspan><tspan fill="url(#amber-accent)">B</tspan>
+  </text>
+
+  <!-- Amber node dot -->
+  <circle cx="50" cy="14" r="3" fill="#F59E0B" />
+</svg>
