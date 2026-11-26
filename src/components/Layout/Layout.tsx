@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import { ContentBox } from '../ContentBox/ContentBox';
 import { BottomNav } from '../BottomNav/BottomNav';
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
+import { ExperienceCounter } from '../ExperienceCounter/ExperienceCounter';
 import { useTheme } from '../../hooks/useTheme';
 import { Home } from '../../sections/Home';
 import { Skill } from '../../sections/Skill';
@@ -30,6 +31,7 @@ export function Layout() {
 
   return (
     <div className={styles.layout}>
+      <ExperienceCounter />
       <ThemeToggle theme={theme} onToggle={toggleTheme} />
       <ContentBox>
         <AnimatePresence mode="wait">

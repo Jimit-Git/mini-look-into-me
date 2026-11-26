@@ -22,6 +22,7 @@
   --timeline-line: rgba(26, 26, 26, 0.14);
   --transition-speed: 0.4s;
   --font-mono: 'JetBrains Mono', monospace;
+  --card-border: #FFFFFF;
 }
 
 [data-theme="dark"] {
@@ -36,6 +37,7 @@
   --accent-glow: rgba(245, 158, 11, 0.3);
   --accent-hover: #FBBF24;
   --timeline-line: rgba(245, 242, 235, 0.14);
+  --card-border: #2D2D2D;
 }
 
 html, body, #root {

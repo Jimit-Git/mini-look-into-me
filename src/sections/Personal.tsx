@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { parseMarkdown } from '../utils/markdown';
 import personalRaw from '../content/personal.md?raw';
+import BounceCards from '../components/BounceCards/BounceCards';
 import styles from './Personal.module.css';
 
 const pageTransition = {
@@ -23,6 +24,7 @@ interface PersonalData {
 }
 
 function resolveAssetPath(src: string): string {
+  if (src.startsWith('http://') || src.startsWith('https://')) return src;
   return `${import.meta.env.BASE_URL}${src.replace(/^\//, '')}`;
 }
 
@@ -31,30 +33,39 @@ export function Personal() {
   const { data, content } = parseMarkdown<PersonalData>(personalRaw);
   const photos = data.photos || [];
 
+  const bounceImages = photos.map((photo) => ({
+    src: resolveAssetPath(photo.src),
+    alt: photo.alt || photo.caption,
+  }));
+
+  const handleCardClick = (index: number) => {
+    if (photos[index]) {
+      setSelectedPhoto(photos[index]);
+    }
+  };
+
   return (
     <motion.section className={styles.personal} {...pageTransition}>
       <h2 className={styles.heading}>{data.title || 'personal'}</h2>
 
       {content && <p className={styles.bio}>{content}</p>}
 
-      <div className={styles.gallery}>
-        {photos.map((photo) => (
-          <figure
-            key={photo.src}
-            className={styles.photoCard}
-            onClick={() => setSelectedPhoto(photo)}
-          >
-            <div className={styles.imageFrame}>
-              <img
-                src={resolveAssetPath(photo.src)}
-                alt={photo.alt}
-                className={styles.photo}
-                loading="lazy"
-              />
-            </div>
-            <figcaption className={styles.caption}>{photo.caption}</figcaption>
-          </figure>
-        ))}
+      {/* BounceCards Fan Layout */}
+      <div className={styles.bounceCardsWrapper}>
+        <BounceCards
+          images={bounceImages}
+          containerWidth={480}
+          containerHeight={280}
+          cardSize={165}
+          spread={90}
+          rotation={8}
+          pushDistance={115}
+          hoverScale={1.1}
+          borderWidth={4}
+          borderColor="var(--card-border, #ffffff)"
+          radius={12}
+          onCardClick={handleCardClick}
+        />
       </div>
 
       {/* Lightbox Preview */}
